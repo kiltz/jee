@@ -1,11 +1,11 @@
 ﻿	
 Aufgabe:
 --------
-Erzeugen Sie eine Stateless Session Bean "InfoService", die Methoden für folgende Informationen anbietet:
+Erzeuge eine Stateless Session Bean "InfoService", die Methoden für folgende Informationen anbietet:
 - Uhrzeit auf dem Server 
 - Freier Speicher auf dem Server
 - Benutzernamen unter dem der Server läuft
 
-Erstellen Sie einen Client (gerne als JUnit-Test), der die drei Methoden testet.
+Erstelle einen Client (gerne als JUnit-Test), der die drei Methoden testet.
  
 (Zeit: 10-15 Min) 
