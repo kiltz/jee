@@ -10,10 +10,6 @@ public class KommunikationsTestClient {
 
     private static final ServerName SERVER_NAME = ServerName.JBOSS_EAP_6_4;
 
-    /**
-     * @param args
-     * @throws NamingException
-     */
     public static void main(String[] args) throws NamingException {
 
         InitialContext context = holeContext();
@@ -35,10 +31,10 @@ public class KommunikationsTestClient {
         // String beanName = KommunikationsTestImpl.class.getSimpleName();
         String viewClassName = KommunikationsTest.class.getName();
         switch (SERVER_NAME) {
-            case JBOSS5:
+            case JBOSS_5:
                 name = "KommunikationsTest/remote";
                 break;
-            case JBOSS7:
+            case JBOSS_7:
 
                 name = "ejb:" + appName + "/" + modulName + "/"
                         + distinctName + "/" + beanName + "!" + viewClassName
@@ -65,14 +61,14 @@ public class KommunikationsTestClient {
     private static InitialContext holeContext() throws NamingException {
         Properties props = new Properties();
         switch (SERVER_NAME) {
-            case JBOSS5:
+            case JBOSS_5:
                 props.put("java.naming.factory.initial",
                         "org.jnp.interfaces.NamingContextFactory");
                 props.put("java.naming.factory.url.pkgs",
                         "org.jboss.naming:org.jnp.interfaces");
                 props.put("java.naming.p" + "rovider.url", "127.0.0.1:1099");
                 break;
-            case JBOSS7:
+            case JBOSS_7:
             case JBOSS_EAP_6_4:
                 props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
                 break;
@@ -94,5 +90,5 @@ public class KommunikationsTestClient {
 }
 
 enum ServerName {
-    JBOSS5, JBOSS7, JBOSS_EAP_6_4, GLASSFISH, BEA;
+    JBOSS_5, JBOSS_7, JBOSS_EAP_6_4, GLASSFISH, BEA;
 }
