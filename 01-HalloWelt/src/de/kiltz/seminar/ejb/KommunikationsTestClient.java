@@ -8,73 +8,91 @@ import javax.naming.NamingException;
 
 public class KommunikationsTestClient {
 
-	private static final ServerName SERVER_NAME = ServerName.JBOSS7;
-	/**
-	 * @param args
-	 * @throws NamingException
-	 */
-	public static void main(String[] args) throws NamingException {
+    private static final ServerName SERVER_NAME = ServerName.JBOSS_EAP_6_4;
 
-		InitialContext context = holeContext();
-		String jndiName = holeJNDIName();
-		
-		KommunikationsTest service = (KommunikationsTest) context
-				.lookup(jndiName);
-		System.out.println(service.getClass().getName());
-		System.out.println(service.ping("kleiner Test "));
-		
-	}
+    /**
+     * @param args
+     * @throws NamingException
+     */
+    public static void main(String[] args) throws NamingException {
 
-	private static String holeJNDIName() {
-		String name = null; 
-		switch (SERVER_NAME) {
-		case JBOSS5:
-			name = "KommunikationsTest/remote";
-			break;
-		case JBOSS7:
-			String appName = ""; // Name EAR-File
-			String modulName = "KommunikationsTest"; // Name Jar-File
-			String beanName = "KommunikationsTest";
-			// String beanName = KommunikationsTestImpl.class.getSimpleName();
-			String viewClassName = KommunikationsTest.class.getName();
-			
-			name = "ejb:" + appName + "/" + modulName + "/"
-					+ beanName + "!" + viewClassName
-					;
-			name = "ejb:/KommunikationsTest/KommunikationsTest!de.kiltz.seminar.ejb.KommunikationsTest";
-			System.out.println(name);
-			break;
-		case GLASSFISH:
-			name = KommunikationsTest.class.getName();
-			break;
-		}
-		return name;
-	}
+        InitialContext context = holeContext();
+        String jndiName = holeJNDIName();
 
-	private static InitialContext holeContext() throws NamingException {
-		Properties props = new Properties();
-		switch (SERVER_NAME) {
-		case JBOSS5:
-			props.put("java.naming.factory.initial",
-					"org.jnp.interfaces.NamingContextFactory");
-			props.put("java.naming.factory.url.pkgs",
-					"org.jboss.naming:org.jnp.interfaces");
-			props.put("java.naming.provider.url", "127.0.0.1:1099");
-			break;
-		case JBOSS7:
-			props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-			break;
-		case GLASSFISH:
+        KommunikationsTest service = (KommunikationsTest) context
+                .lookup(jndiName);
+        System.out.println(service.getClass().getName());
+        System.out.println(service.ping("kleiner Test "));
+
+    }
+
+    private static String holeJNDIName() {
+        String name = null;
+        String appName = ""; // Name EAR-File
+        String modulName = "KommunikationsTest"; // Name Jar-File
+        String distinctName = ""; // Zusatz in Konfig für JBoss7
+        String beanName = "KommunikationsTest";
+        // String beanName = KommunikationsTestImpl.class.getSimpleName();
+        String viewClassName = KommunikationsTest.class.getName();
+        switch (SERVER_NAME) {
+            case JBOSS5:
+                name = "KommunikationsTest/remote";
+                break;
+            case JBOSS7:
+
+                name = "ejb:" + appName + "/" + modulName + "/"
+                        + distinctName + "/" + beanName + "!" + viewClassName
+                        + "?stateless";
+
+                break;
+            case JBOSS_EAP_6_4:
+
+                name = "ejb:" + appName + "/" + modulName + "/"
+                        + distinctName + "/" + beanName + "!" + viewClassName;
+
+                break;
+            case GLASSFISH:
+                name = KommunikationsTest.class.getName();
+                break;
+            case BEA:
+                //@Stateless(name="KommunikationsTest", mappedName="ejb/KommunikationsTest")
+                name = "ejb/KommunikationsTest#"+ KommunikationsTest.class.getName();
+                break;
+        }
+        return name;
+    }
+
+    private static InitialContext holeContext() throws NamingException {
+        Properties props = new Properties();
+        switch (SERVER_NAME) {
+            case JBOSS5:
+                props.put("java.naming.factory.initial",
+                        "org.jnp.interfaces.NamingContextFactory");
+                props.put("java.naming.factory.url.pkgs",
+                        "org.jboss.naming:org.jnp.interfaces");
+                props.put("java.naming.p" + "rovider.url", "127.0.0.1:1099");
+                break;
+            case JBOSS7:
+            case JBOSS_EAP_6_4:
+                props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+                break;
+            case GLASSFISH:
 //			props.put(Context.URL_PKG_PREFIXES,
 //					"com.sun.enterprise.naming.impl.SerialInitContextFactory");
-			break;
-		}
-		
-		return new InitialContext(props);
-	}
+                break;
+            case BEA:
+                props.put("java.naming.factory.initial",
+                        "weblogic.jndi.WLInitialContextFactory");
+                props.put("java.naming.provider.url", "t3://127.0.0.1:7001");
+
+                break;
+        }
+
+        return new InitialContext(props);
+    }
 
 }
 
 enum ServerName {
-	JBOSS5, JBOSS7, GLASSFISH;
+    JBOSS5, JBOSS7, JBOSS_EAP_6_4, GLASSFISH, BEA;
 }
