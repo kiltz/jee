@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JBOSS">
+    <CLASSES>
+      <root url="file://$JBOSS_HOME$/modules/system/layers/base" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$JBOSS_HOME$/modules/system/layers/base" recursive="true" />
+  </library>
+</component>

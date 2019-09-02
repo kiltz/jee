@@ -1,0 +1,14 @@
+JBoss 5.x
+=========
+
+Sofern die Warnings:
+	xxx WARN  [InterceptorsFactory] EJBTHREE-1246: Do not use InterceptorsFactory with a ManagedObjectAdvisor, InterceptorRegistry should be used via the bean container
+nerven:
+in der deploy/ejb3-interceptors-aop.xml
+	die Zeilen
+	 <aspect name="InterceptorsFactory" factory="org.jboss.ejb3.interceptors.aop.InterceptorsFactory" scope="PER_INSTANCE"/>
+	 	(Zeile 78)
+	und
+	 <advice name="invoke" aspect="InterceptorsFactory"/> 
+	 	(Zeile 102)
+	auskommentieren! 
