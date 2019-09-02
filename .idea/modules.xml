@@ -4,7 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/01-HalloWelt/01-HalloWelt.iml" filepath="$PROJECT_DIR$/01-HalloWelt/01-HalloWelt.iml" />
       <module fileurl="file://$PROJECT_DIR$/02-SLSB/02-SLSB.iml" filepath="$PROJECT_DIR$/02-SLSB/02-SLSB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" filepath="$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jee.iml" filepath="$PROJECT_DIR$/.idea/jee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kv-common/kv-common.iml" filepath="$PROJECT_DIR$/kv-common/kv-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kv-main/kv-main.iml" filepath="$PROJECT_DIR$/kv-main/kv-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kv-test/kv-test.iml" filepath="$PROJECT_DIR$/kv-test/kv-test.iml" />
     </modules>
   </component>
 </project>
