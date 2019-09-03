@@ -5,6 +5,6 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://C:/java/jboss-eap-6.4/modules/system/layers/base" recursive="false" />
+    <jarDirectory url="file://C:/java/jboss-eap-6.4/modules/system/layers/base" recursive="true" />
   </library>
 </component>
