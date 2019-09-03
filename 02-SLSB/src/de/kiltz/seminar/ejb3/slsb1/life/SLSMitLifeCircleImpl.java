@@ -5,7 +5,7 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-@Stateless(name = "SLSMitLifeCircle", mappedName = "ejb/SLSMitLifeCircle")
+@Stateless(name = "SLSMitLifeCircle")
 @Remote(SLSMitLifeCircle.class)
 public class SLSMitLifeCircleImpl implements SLSMitLifeCircle {
 

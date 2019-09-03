@@ -24,5 +24,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jboss-client" level="project" />
+    <orderEntry type="library" name="org.hamcrest:hamcrest-all:1.3" level="application" />
   </component>
 </module>

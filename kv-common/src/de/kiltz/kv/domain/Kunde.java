@@ -1,6 +1,7 @@
 package de.kiltz.kv.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Kunde implements Serializable {
 	private Long id;

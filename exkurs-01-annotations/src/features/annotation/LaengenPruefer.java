@@ -19,7 +19,7 @@ public class LaengenPruefer {
                 Laenge anno = feld.getAnnotation(Laenge.class);
                 String inhalt = (String) feld.get(o);
                 String name = feld.getName();
-                sage("Prüfe Feld '" + name + "' mit maximale Länge: "
+                sage("PrÃ¼fe Feld '" + name + "' mit maximale LÃ¤nge: "
                         + anno.max() + " Inhalt: '" + inhalt + "' ("
                         + inhalt.length() + " Zeichen)");
                 if (inhalt != null && inhalt.length() > anno.max()) {

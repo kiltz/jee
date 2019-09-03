@@ -66,7 +66,7 @@ public class KommunikationsTestClient {
                         "org.jnp.interfaces.NamingContextFactory");
                 props.put("java.naming.factory.url.pkgs",
                         "org.jboss.naming:org.jnp.interfaces");
-                props.put("java.naming.p" + "rovider.url", "127.0.0.1:1099");
+                props.put("java.naming.provider.url", "127.0.0.1:1099");
                 break;
             case JBOSS_7:
             case JBOSS_EAP_6_4:

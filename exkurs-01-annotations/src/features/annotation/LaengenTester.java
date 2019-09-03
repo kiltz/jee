@@ -13,7 +13,7 @@ public class LaengenTester {
         obj.setEgalerString("Egal");
         obj.setKurzerString("Mehr als 10 Zeichen");
         obj.setMittlererString("Weniger wie 25 Zeichen");
-        obj.setLangerString("255 Zeichen sind möglich!");
+        obj.setLangerString("255 Zeichen sind mÃ¶glich!");
 
         LaengenPruefer pruefer = new LaengenPruefer();
         List<String> fehler = pruefer.pruefe(obj);

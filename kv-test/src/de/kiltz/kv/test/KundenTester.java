@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,10 +19,10 @@ import de.kiltz.seminar.ejb3.tools.EJBTools;
 
 public class KundenTester {
 
-	private static KundenVerwaltung service;
+	private KundenVerwaltung service;
 	
-	@BeforeClass
-	public static void init() {
+	@Before
+	public  void init() {
 		try {
 			InitialContext context = new InitialContext();
 			service = (KundenVerwaltung) context.lookup(EJBTools.machJNDIName(KundenVerwaltung.class));

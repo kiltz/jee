@@ -15,14 +15,14 @@ public class FehlerTester {
 		InitialContext context = new InitialContext();
 		FehlerMacher service = (FehlerMacher) context.lookup(EJBTools.machJNDIName(FehlerMacher.class));
 		System.out.println("ApplicationFehler");
-		try {
-			service.machApplicationFehler();
-		} catch (Exception e) {
-			// e.printStackTrace();
-		}
+//		try {
+//			service.machApplicationFehler();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
-		// System.out.println("SystemFehler");
-		// service.machSystemFehler();
+//		 System.out.println("SystemFehler");
+//		 service.machSystemFehler();
 		System.out.println("checked SystemFehler");
 		service.machCheckedSystemFehler();
 	}
