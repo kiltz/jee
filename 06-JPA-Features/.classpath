@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JBOSS_HOME/bin/client/jboss-client.jar" sourcepath="/JBOSS_HOME/jee-src/ejb-api"/>
+	<classpathentry kind="var" path="JBOSS_HOME/modules/system/layers/base/javax/persistence/api/main/hibernate-jpa-2.0-api-1.0.1.Final-redhat-3.jar" sourcepath="/JBOSS_HOME/jee-src/persistence-api"/>
+	<classpathentry kind="var" path="JBOSS_HOME/modules/system/layers/base/org/hibernate/commons-annotations/main/hibernate-commons-annotations-4.0.2.Final-redhat-1.jar"/>
+	<classpathentry kind="var" path="JBOSS_HOME/modules/system/layers/base/org/hibernate/main/hibernate-core-4.2.18.Final-redhat-2.jar"/>
+	<classpathentry kind="var" path="JBOSS_HOME/modules/system/layers/base/org/hibernate/main/hibernate-entitymanager-4.2.18.Final-redhat-2.jar"/>
+	<classpathentry kind="var" path="JBOSS_HOME/modules/system/layers/base/org/hibernate/main/hibernate-infinispan-4.2.18.Final-redhat-2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
