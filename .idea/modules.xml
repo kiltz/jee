@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/02-SLSB/02-SLSB.iml" filepath="$PROJECT_DIR$/02-SLSB/02-SLSB.iml" />
       <module fileurl="file://$PROJECT_DIR$/03-SFSB/03-SFSB.iml" filepath="$PROJECT_DIR$/03-SFSB/03-SFSB.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-JPA-Basics/04-JPA-Basics.iml" filepath="$PROJECT_DIR$/04-JPA-Basics/04-JPA-Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-JPA-Beziehungen/05-JPA-Beziehungen.iml" filepath="$PROJECT_DIR$/05-JPA-Beziehungen/05-JPA-Beziehungen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-JPA-Features/06-JPA-Features.iml" filepath="$PROJECT_DIR$/06-JPA-Features/06-JPA-Features.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" filepath="$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" filepath="$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" filepath="$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" />

@@ -18,6 +18,7 @@ import de.kiltz.kv.entity.KundeEntity;
 @Stateless(name="KundenVerwaltung")
 @Remote(KundenVerwaltung.class)
 @Interceptors({ZeitStopperAspect.class})
+@TransactionAttribute
 public class KundenVerwaltungImpl implements KundenVerwaltung{
 
 	@EJB
@@ -26,7 +27,9 @@ public class KundenVerwaltungImpl implements KundenVerwaltung{
 	@Override
 	public Kunde neuerKunde(Kunde k) throws PflichtfeldException {
 		pruefe(k);
+
 		KundeEntity kEnt = KundeAssembler.toEntity(k);
+		kEnt.setKdNr("K12345");
 		kEnt = kundenDao.save(kEnt);
 		return KundeAssembler.toDomain(kEnt);
 	}
@@ -35,6 +38,7 @@ public class KundenVerwaltungImpl implements KundenVerwaltung{
 	public Kunde aendereKunde(Kunde k) throws PflichtfeldException {
 		pruefe(k);
 		KundeEntity kEnt = KundeAssembler.toEntity(k);
+		kEnt.setKdNr("K12346");
 		kEnt = kundenDao.update(kEnt);
 		return KundeAssembler.toDomain(kEnt);
 	}

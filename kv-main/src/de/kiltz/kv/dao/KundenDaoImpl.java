@@ -16,50 +16,46 @@ import javax.persistence.Query;
 
 import de.kiltz.kv.entity.KundeEntity;
 
-@Singleton
+@Stateless
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class KundenDaoImpl implements KundenDao {
 
-	private Map<Long, KundeEntity> store;
+	@PersistenceContext
+	private EntityManager em;
 
-	@PostConstruct
-	public void init() {
-		store = new HashMap<>();
-		// Testdaten anlegen
-	}
 	@Override
 	public KundeEntity save(KundeEntity k) {
-		k.setId(System.currentTimeMillis());
-		store.put(k.getId(), k);
+		System.out.println(k.getKdNr());
+		em.persist(k);
 		return k;
 	}
 
 	@Override
 	public KundeEntity update(KundeEntity k) {
-		store.put(k.getId(), k);
+		k = em.merge(k);
 		return k;
 	}
 
 	@Override
 	public KundeEntity getById(Long id) {
-		
-		return store.get(id);
+		KundeEntity k = em.find(KundeEntity.class, id );
+		return k;
 	}
 
 	@Override
 	public void delete(Long id) {
-		store.remove(id);
-
+		KundeEntity k = getById(id);
+		if (k != null) {
+			em.remove(k);
+		}
 	}
 
 	@Override
 	public List<KundeEntity> findByName(String name) {
-		List<KundeEntity> erg = new ArrayList<>();
-		for (Map.Entry<Long, KundeEntity> e : store.entrySet()) {
-			if (e.getValue().getName().contains(name)){
-				erg.add(e.getValue());
-			}
-		}
-		return erg;
+		Query q = em.createQuery("select k from Kunde k where k.name like :name");
+		q.setParameter("name","%"+name+"%");
+		List<KundeEntity> liste = q.getResultList();
+		return liste;
 	}
 
 

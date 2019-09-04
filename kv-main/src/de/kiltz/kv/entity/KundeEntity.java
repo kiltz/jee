@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+@Entity(name = "kunde")
+@Table(name = "kunde")
 public class KundeEntity implements Serializable {
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String name;
+	private String kdNr;
 
 	public KundeEntity() {
 	}
@@ -37,4 +41,11 @@ public class KundeEntity implements Serializable {
 		this.name = name;
 	}
 
+	public String getKdNr() {
+		return kdNr;
+	}
+
+	public void setKdNr(String kdNr) {
+		this.kdNr = kdNr;
+	}
 }
