@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import de.kiltz.kv.domain.Adresse;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,18 +43,27 @@ public class KundenTester {
 			// Alles Gut!
 		}
 		Kunde guterKunde = new Kunde("Mieser Max");
+		guterKunde.setKdNr("K12345");
+		Adresse a = service.neueAdresse(new Adresse("Hauptstr. 21", "66555", "Nußbaum"));
+		assertNotNull(a.getId());
+		guterKunde.setAdresse(a);
 		try {
 			assertNull(guterKunde.getId());
 			guterKunde = service.neuerKunde(guterKunde);
 			assertNotNull(guterKunde.getId());
 		} catch (PflichtfeldException e) {
+			e.printStackTrace();
 			fail("Sollte KEINE Ex werfen!");
 		}
+
+		Kunde neu = service.holeKunde(guterKunde.getId());
+		assertNotNull(neu);
+		assertNotNull(neu.getAdresse());
 		// und aufräumen!
-		service.loescheKunde(guterKunde.getId());
+//		service.loescheKunde(guterKunde.getId());
 	}
 	
-	@Test
+//	@Test
 	public void testeUpdateUndRead() {
 		Kunde k = new Kunde("Mieser Max");
 		try {

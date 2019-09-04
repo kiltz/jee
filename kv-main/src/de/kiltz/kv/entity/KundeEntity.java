@@ -2,12 +2,8 @@ package de.kiltz.kv.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity(name = "kunde")
 @Table(name = "kunde")
 public class KundeEntity implements Serializable {
@@ -17,12 +13,23 @@ public class KundeEntity implements Serializable {
 	private String name;
 	private String kdNr;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	private AdresseEntity adresse;
+
 	public KundeEntity() {
 	}
  
 	public KundeEntity(String name) {
 		super();
 		this.name = name;
+	}
+
+	public AdresseEntity getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(AdresseEntity adresse) {
+		this.adresse = adresse;
 	}
 
 	public Long getId() {
