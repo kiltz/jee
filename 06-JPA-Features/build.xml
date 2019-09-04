@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="JPA" default="deploy" basedir=".">
+<project name="JPA-Features" default="deploy" basedir=".">
 
 	<property name="appName" value="EJB3JPAFeatures" />
 	<target name="deploy">
