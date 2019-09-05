@@ -1,5 +1,5 @@
 
-package ws;
+package de.kiltz.kv.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für pingResponse complex type.
+ * <p>Java-Klasse für holeKundeResponse complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="pingResponse">
+ * &lt;complexType name="holeKundeResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ws.kv.kiltz.de/}kundeXsd" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "pingResponse", propOrder = {
+@XmlType(name = "holeKundeResponse", propOrder = {
     "_return"
 })
-public class PingResponse {
+public class HoleKundeResponse {
 
     @XmlElement(name = "return")
-    protected String _return;
+    protected KundeXsd _return;
 
     /**
      * Ruft den Wert der return-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link KundeXsd }
      *     
      */
-    public String getReturn() {
+    public KundeXsd getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class PingResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link KundeXsd }
      *     
      */
-    public void setReturn(String value) {
+    public void setReturn(KundeXsd value) {
         this._return = value;
     }
 

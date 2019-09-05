@@ -34,7 +34,7 @@
 			<xs:complexType name="domainObject">
 				<xs:sequence>
 					<xs:element name="datum" type="xs:date" />
-					<xs:element minOccurs="0" name="id" type="xs:long" />
+					<xs:element minOccurs="0"  maxOccurs="3" name="id" type="xs:long" />
 					<xs:element minOccurs="0" name="text" type="xs:string" />
 					<xs:element name="zahl" type="xs:double" />
 				</xs:sequence>

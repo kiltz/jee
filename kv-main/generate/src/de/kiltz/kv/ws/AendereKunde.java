@@ -1,5 +1,5 @@
 
-package ws;
+package de.kiltz.kv.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für pingResponse complex type.
+ * <p>Java-Klasse für aendereKunde complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="pingResponse">
+ * &lt;complexType name="aendereKunde">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="kundeXsd" type="{http://ws.kv.kiltz.de/}kundeXsd"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "pingResponse", propOrder = {
-    "_return"
+@XmlType(name = "aendereKunde", propOrder = {
+    "kundeXsd"
 })
-public class PingResponse {
+public class AendereKunde {
 
-    @XmlElement(name = "return")
-    protected String _return;
+    @XmlElement(required = true)
+    protected KundeXsd kundeXsd;
 
     /**
-     * Ruft den Wert der return-Eigenschaft ab.
+     * Ruft den Wert der kundeXsd-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link KundeXsd }
      *     
      */
-    public String getReturn() {
-        return _return;
+    public KundeXsd getKundeXsd() {
+        return kundeXsd;
     }
 
     /**
-     * Legt den Wert der return-Eigenschaft fest.
+     * Legt den Wert der kundeXsd-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link KundeXsd }
      *     
      */
-    public void setReturn(String value) {
-        this._return = value;
+    public void setKundeXsd(KundeXsd value) {
+        this.kundeXsd = value;
     }
 
 }

@@ -1,23 +1,22 @@
 
-package ws;
+package de.kiltz.kv.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für pingResponse complex type.
+ * <p>Java-Klasse für KundenWSException complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="pingResponse">
+ * &lt;complexType name="KundenWSException">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "pingResponse", propOrder = {
-    "_return"
+@XmlType(name = "KundenWSException", propOrder = {
+    "message"
 })
-public class PingResponse {
+public class KundenWSException {
 
-    @XmlElement(name = "return")
-    protected String _return;
+    protected String message;
 
     /**
-     * Ruft den Wert der return-Eigenschaft ab.
+     * Ruft den Wert der message-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getReturn() {
-        return _return;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Legt den Wert der return-Eigenschaft fest.
+     * Legt den Wert der message-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setReturn(String value) {
-        this._return = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }
