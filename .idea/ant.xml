@@ -8,5 +8,8 @@
     <buildFile url="file://$PROJECT_DIR$/04-JPA-Basics/build.xml" />
     <buildFile url="file://$PROJECT_DIR$/05-JPA-Beziehungen/build.xml" />
     <buildFile url="file://$PROJECT_DIR$/06-JPA-Features/build.xml" />
+    <buildFile url="file://$PROJECT_DIR$/09-JMS-MDB/build.xml" />
+    <buildFile url="file://$PROJECT_DIR$/07-WS/build.xml" />
+    <buildFile url="file://$PROJECT_DIR$/08-REST/build.xml" />
   </component>
 </project>

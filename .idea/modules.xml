@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/07-WS/07-WS.iml" filepath="$PROJECT_DIR$/07-WS/07-WS.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-WS-Client/07-WS-Client.iml" filepath="$PROJECT_DIR$/07-WS-Client/07-WS-Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-WS-EJB-Client/07-WS-EJB-Client.iml" filepath="$PROJECT_DIR$/07-WS-EJB-Client/07-WS-EJB-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-REST/08-REST.iml" filepath="$PROJECT_DIR$/08-REST/08-REST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-REST-Client/08-REST-Client.iml" filepath="$PROJECT_DIR$/08-REST-Client/08-REST-Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" filepath="$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" filepath="$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" filepath="$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" />
