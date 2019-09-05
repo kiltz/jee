@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--BiPRO R2.1.0 - Revision 19.05.2010-->
+<!--nillable = "false"-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.bipro.net/namespace/tarifierung" xmlns:taa="http://www.bipro.net/namespace/tarifierung" xmlns:partner="http://www.bipro.net/namespace/partner" xmlns:daten="http://www.bipro.net/namespace/datentypen" xmlns:allgemein="http://www.bipro.net/namespace/allgemein" xmlns:bipro="http://www.bipro.net/namespace" targetNamespace="http://www.bipro.net/namespace/tarifierung" bipro:Name="bipro-tarifierung-2.1.0.xsd" bipro:Version="2.1.0" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xsd:import namespace="http://www.bipro.net/namespace/datentypen" schemaLocation="bipro-datentypen-2.1.0.xsd"/>
+	<xsd:import namespace="http://www.bipro.net/namespace/partner" schemaLocation="bipro-partner-2.1.0.xsd"/>
+	<xsd:import namespace="http://www.bipro.net/namespace/allgemein" schemaLocation="bipro-allgemein-2.1.0.xsd"/>
+	<xsd:complexType name="CT_Kondition">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Konditionen beziehen sich auf den Beitrag und nicht auf Leistungen. Z.B. Rabatte.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="KategorieID" type="daten:STE_KategorieID" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Eine Kondition MUSS sich auf den Beitrag beziehen. Mit der KategorieID wird festgelegt ob es ich bei der Kondition um einen Zuschlag oder Abschlag handelt. </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="ArtID" type="daten:STE_Kondition" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Wertfreier Name der Kondition. Ob es sich bei der Kondition um einen Zu- oder Abschlag handelt MUSS über das Attribut KategorieID festgelegt werden. </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Wert" type="daten:ST_Dezimalzahl" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Berechnungsgrundlage gemaess Einheit, z. B. Prozentsatz oder Waehrungsbetrag. Die Ausprägung DARF NICHT mit Vorzeichen geliefert werden. Ob es sich um einen Zu- oder Abschlag  handelt wird über das Attribut KategorieID gesteuert.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Werteinheit" type="daten:ST_Werteinheit" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Einheit der Berechnungsgrundlage (z. B. EUR).</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Grund" type="daten:ST_Text1000" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Textliche Begründung zur vereinbarten Kondition.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Waehrung" type="daten:ST_Waehrungsschluessel" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Waehrungsbetrag gemaess Waehrungsschluessel</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Gueltigkeit" type="CT_Zeitraum" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOffer">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OfferRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_FondsAnteil">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Informationen zu den einzelnen Fonds des Portfolios</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="Garantiefonds" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Angabe, ob der Fonds am Ende seiner Laufzeit eine (teilweise) Rückzahlung des Anlagebetrags garantiert.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="ISIN" type="daten:ST_ISIN" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Die International Securities Identification Number (ISIN) des Fonds</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Prozentsatz" type="daten:ST_Prozent" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Prozentuale Aufteilung von Zuführungen auf die einzelnen Fonds eines Portfolios ("Beitragsaufteilung" oder auch "Zuführungsaufteilung"). Der Anlagebetrag wird zu diesem Prozentsatz in diesen Fonds investiert.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOrderResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OrderResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="setOrderResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OrderResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_Bezugsrecht">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Angaben zu Bezugsrechten und -berechtigten.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="Leistungsfall" type="daten:ST_Leistungsfall" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="UnwiderruflichesBezugsrecht" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="IndexBerechtigter" type="daten:ST_Bezugsrecht" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Individualabzug" type="daten:ST_Text255" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Bezugsberechtigter" type="CT_Bezugsberechtigter" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Steuer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Auf den Beitrag zu erhebende Steuern (z.B. Versicherungssteuer).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:ST_Steuerart" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Gibt die Steueranteile im Bruttobeitrag aus. Da im GDV-Satz (Stand 16.2.2005, Anlage 62) noch keine vollständige Liste vorliegt wurden vorerst nur die unten aufgeführten BiPRO-Schlüssel definiert.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Satz" type="daten:ST_Dezimalzahl" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Betrag" type="daten:ST_Betrag" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Land" type="daten:ST_Laenderkennzeichen" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Waehrung" type="daten:ST_Waehrungsschluessel" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOrderQuestions">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OrderRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_Tarifierung">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Geschaeftsvorgang Tarifierung. Darf nicht spartenspezifisch abgeleitet werden, da sonst die spartenuebergreifende Buendelung von Produkten nicht mehr moeglich waere.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_TAA">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getQuote">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_QuoteRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getQuoteQuestions">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_QuoteRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getQuoteQuestionsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_QuoteResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_Zeitraum">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Dient der tagesgenauen Darstellung 'krummer' Erhebungszeiträume.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="Von" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Bis" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Verkaufsprodukt">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Oberste Ebene der Produkthierarchie gemaess VAA-Modell. Buendelt Produkte und Verkaufsprodukte zu einer verkaufbaren Einheit. Darf nicht spartenspezifisch abgeleitet werden, da ansonsten die spartenuebergreifende Buendelung von Produkten innerhalb des Verkaufsproduktes nicht funktionieren kann.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_Produktbaustein">
+				<xsd:sequence>
+<xsd:element name="Produkt" type="CT_Produkt" minOccurs="1" maxOccurs="unbounded"/>
+<xsd:element name="Verkaufsprodukt" type="CT_Verkaufsprodukt" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Produkt">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Mittlere Ebene der Produkthierarchie gemaess VAA-Modell. Spartenspezifisch abzuleiten.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_Produktbaustein">
+				<xsd:sequence>
+<xsd:element name="Sparte" type="daten:ST_Sparte" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Paket" type="daten:STE_Paket" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Elementarprodukt" type="CT_Elementarprodukt" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Produkt" type="CT_Produkt" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="VersicherungssummeOderLeistung" type="CT_VersicherungssummeOderLeistung" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Dynamik" type="CT_Dynamik" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Leistungsausschluss" type="CT_Leistungsausschluss" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_QuoteRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Nachricht zur Anforderung einer Tarifierung.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAnfrage">
+				<xsd:sequence>
+<xsd:element name="Tarifierung" type="CT_Tarifierung" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_OfferResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Nachricht zur Antwort auf die Anfrage nach einem Angebot.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAntwort">
+				<xsd:sequence>
+<xsd:element name="Angebot" type="CT_Angebot" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Dauer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Monatsgenaue Angabe von Laufzeiten (auch unterjährig). Mindestens eines der Attribute LaufzeitJahre und LaufzeitMonate ist zu befuellen. Fehlt in der Nachricht eines der beiden, so wird hierfuer der Wert 0 angenommen, so kann zum Beispiel bei einer Laufzeit von genau einem Jahr die Angabe LaufzeitMonate weggelassen werden.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="LaufzeitJahre" type="daten:ST_Ganzzahl" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="LaufzeitMonate" type="daten:ST_Monate" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Beitrag">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Zu zahlende, vorgegebene oder berechnete Beiträge.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:STE_Beitrag" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Betrag" type="daten:ST_Betrag" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Waehrung" type="daten:ST_Waehrungsschluessel" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Zahlungsweise" type="daten:ST_Zahlungsweise" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Prozentsatz" type="daten:ST_Prozent" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Für LV gilt: Bei reduzierten Anfangsbeiträgen (Startphase): Angabe des reduzierten Beitrags in Prozent des ersten vollen Beitrags.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Erhebung" type="CT_Zeitraum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Steuer" type="CT_Steuer" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Dauer" type="CT_Dauer" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOfferResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OfferResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="setOrderQualified">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OrderRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="setOrderQualifiedResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OrderResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_Elementarprodukt" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Unterste Ebene der Produkthierarchie gemaess VAA-Modell. Kleinste tariefierbare Einheit. Spartenspezifisch abzuleiten und zu benennen (z.B. Deckung, Tarif, etc.).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_Produktbaustein">
+				<xsd:sequence>
+<xsd:element name="FondsPortfolio" type="CT_FondsPortfolio" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Leistungsausschluss" type="CT_Leistungsausschluss" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="VersicherungssummeOderLeistung" type="CT_VersicherungssummeOderLeistung" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Dynamik" type="CT_Dynamik" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Produktbaustein" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Basisklasse aller Produktbausteine (Verkaufsprodukt, Produkt, Elementarprodukt) gemaess VAA-Modell.
+
+Das Attribut Tarifgeneration (ST_Tarifgeneration) fehlt, da der entsprechende einfache Datentyp nicht spezifiziert ist.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="Beginn" type="daten:ST_DatumZeit" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Beginn des Versicherungsschutzes.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Ablauf" type="daten:ST_DatumZeit" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Ablauf des Versicherungsschutzes.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Bezeichnung" type="daten:ST_Text255" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Eine für Menschen verständliche Bezeichnung des Elemtarproduktes, Produktes oder Verkaufsproduktes. Nicht geeignet zur Schlüsselung von Produktbausteinen.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Variante" type="daten:STE_Variante" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Tarifgeneration" type="daten:STE_Tarifgeneration" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="GewuenschteZahlungsweise" type="daten:ST_Zahlungsweise" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Kurzbeschreibung" type="daten:ST_Text1000" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Bedingungen" type="daten:STE_Bedingungen" minOccurs="0" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Das Attribut kann n-fach vorkommen, weil ein Produkt mehrere Bedingungswerke haben kann. Je Attribut wird eine Bedingung inkl. Bedingungsversion (z. B. VHB2005) geschlüsselt.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Versicherungsunternehmen" type="allgemein:CT_Versicherungsunternehmen" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Kondition" type="CT_Kondition" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Bezugsrecht" type="CT_Bezugsrecht" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Beitrag" type="CT_Beitrag" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Dauer" type="CT_Dauer" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOrderQualifiedResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OrderResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="setOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OrderRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OrderRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_FondsPortfolio">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Das Fonds-Portfolio einer fondsgebundenen Versicherung</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="Portfoliobezeichnung" type="daten:STE_Portfoliobezeichnung" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">VU-individuelle Beschreibung des Portfolios</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Portfoliomanagement" type="daten:STE_Portfoliomanagement" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">VU-individuelles Kennzeichen für ein Management des Portfolios</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Beitragsgarantie" type="daten:ST_Faktor" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Die Beitragsgarantie als Faktor (Werte: 0.0 bis 1.0)</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Phase" type="daten:ST_Phase" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="FondsAnteil" type="CT_FondsAnteil" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_OrderRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Nachricht zur Anforderung und zum Einreichen eines Antrags.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAnfrage">
+				<xsd:sequence>
+<xsd:element name="Antrag" type="CT_Antrag" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Angebot">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Geschaeftsvorgang Angebot. Darf nicht spartenspezifisch abgeleitet werden, da sonst die spartenuebergreifende Buendelung von Produkten nicht mehr moeglich waere.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_TAA">
+				<xsd:sequence>
+<xsd:element name="Beitragszahler" type="CT_Beitragszahler" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Antrag">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Geschaeftsvorgang Antrag. Darf nicht spartenspezifisch abgeleitet werden, da sonst die spartenuebergreifende Buendelung von Produkten nicht mehr moeglich waere.
+
+Die Attribute Modell (ST_Antragsmodell), ArtDerBeratung (ST_ArtDerBeratung) und BedingungenUebergabeForm (ST_BedingungenUebergabeForm) fehlen, da die entsprechenden einfachen Datentypen nicht definiert sind.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="CT_TAA">
+				<xsd:sequence>
+<xsd:element name="Hauptfaelligkeit" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Aktionskennzeichen" type="daten:ST_Text030" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Antragsdatum" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="BedingungenZurKenntnisGenommen" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">VN hat Bedingungen zur Kenntnis genommen (gemaess Antragsmodell).</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="TelefonwerbungErwuenscht" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">VN stimmt Telefonwerbung zu.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="MailwerbungErwuenscht" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">VN stimmt Werbung per Email zu.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="BesondereVereinbarungen" type="daten:ST_Text1000" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="AktenzeichenVM" type="daten:ST_Text030" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Zuordnungsmerkmal des Vermittlers, z. B. Niederlassung/Büro des Vermittlers, Sachbearbeiter des Vermittlers, Vertragsnummer des Vermittlers. Das im Antrag übermittelte AktenzeichenVM MUSS vom Versicherer bei der Policierung zum Vertrag gespeichert und bei vertragsbezogenen Geschäftsvorgängen im Objekt Vertrag ausgegeben werden.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="AktenzeichenVN" type="daten:ST_Text030" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Zuordnungsmerkmal des Versicherungsnehmers (VN), z. B. Niederlassung, Betriebsstätte, Abteilung, Kostenstelle des VN. Das im Antrag übermittelte AktenzeichenVN MUSS vom Versicherer bei der Policierung zum Vertrag gespeichert und bei vertragsbezogenen Geschäftsvorgängen im Objekt Vertrag ausgegeben werden.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="EinwilligungInformationsanfrage" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="VVGBeratungsverzicht" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="AntragUnterschrieben" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="ZustimmungFinanzdienstleister" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="DatenschutzerklaerungUnterschrieben" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Abschlussmodell" type="daten:ST_Abschlussmodell" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="ArtDerBeratung" type="daten:ST_ArtDerBeratung" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="BedingungUebergabeform" type="daten:ST_BedingungUebergabeform" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Unterschriftsverfahren" type="daten:ST_Unterschriftsverfahren" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Attribut zur Festlegung, wie die Willenserklärung erfolgt.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="DatenschutzerklaerungKenntnisnahme" type="daten:ST_DatenschutzerklaerungKenntnisnahme" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Antragsart" type="daten:ST_Antragsart" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Vertragsnummer" type="allgemein:CT_Vertragsnummer" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="ZusaetzlicheAntragsdaten" type="CT_ZusaetzlicheAntragsdaten" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Beitragszahler" type="CT_Beitragszahler" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Dynamik">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Rechtlich vereinbarte Dynamik auf Beitraege oder Leistungen.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:STE_Dynamik" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Frequenz" type="daten:STE_Frequenz" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Wert" type="daten:ST_Prozent" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Hier wird der Prozentanteil ohne Prozentzeichen eingetragen. z.B. 50 = 50% oder 12,5 = 12,5%</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Beginn" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Ablauf" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="KategorieID" type="daten:ST_DynamikKategorieID" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Unterscheidet, ob es sich bei der beschriebenen Dynamik um eine Beitrags- oder Leistungsdynamik handelt. </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Hochrechnung" type="daten:ST_JaNein" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Dynamik fließt nicht in die Beitrags- bzw Leistungsverläufe ein</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Leistungsausschluss">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Abbildung von Versicherungsausschlüssen. In der Krankenversicherung zur Abblidung von besonderen Vereinbarungen, insbesondere von durch das Vertriebssystem definierten Leistungsausschlüssen.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:STE_Leistungsausschluss" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Hier wird die Art des Leistungsausschlusses aus einer Liste angegeben.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Art" type="daten:ST_Text255" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Wird benutzt, wenn es keine feste Werteliste gibt, oder eine externe Liste (z. B. ICD-Code) verwendet wird, oder Freitext erfasst wird.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Grund" type="daten:ST_Text1000" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Beschreibung des Grundes für denLeistungsausschluss. Z.B. Diagnosetext</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Endetermin" type="daten:ST_Datum" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Falls der Leistungsauschluss befristet ist wird hier der Endetermin des Leistungsausschlusses eingetragen. (z.B. voraussichtlicher Geburtstermin). Darf nur angewendet werden, wenn keine Dauer für den Leistungsausschluss angegeben wurde.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+<xsd:element name="Dauer" type="CT_Dauer" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getQuoteResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_QuoteResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_OfferRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Nachricht zur Anforderung eines Angebots.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAnfrage">
+				<xsd:sequence>
+<xsd:element name="Angebot" type="CT_Angebot" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOrderQuestionsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OrderResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_Bezugsberechtigter">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Angaben zum Bezugsberechtigten.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="partner:CT_Partnerrolle">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOfferQuestions">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OfferRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_OrderResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Antwort auf Anfrage nach einem Antrag bzw. Einreichen eines solchen.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAntwort">
+				<xsd:sequence>
+<xsd:element name="Antrag" type="CT_Antrag" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_VersicherungssummeOderLeistung">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Da sich herausgestellt hat, dass es zwischen Versicherungssummen (Komposit) und Leistungen (Leben) abgesehen vom Namen keine modellierungsrelevanten Unterschiede gibt, sind beide synonym durch diesen Datentypen repraesentiert.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:STE_VersicherungssummeOderLeistung" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Wert" type="daten:ST_Dezimalzahl" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Wertschluessel" type="daten:STE_LeistungSchluessel" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Werteinheit" type="daten:ST_Werteinheit" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Waehrung" type="daten:ST_Waehrungsschluessel" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Auszahlungsweise" type="daten:ST_Zahlungsweise" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Dauer" type="CT_Dauer" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="GarantierteErhoehung" type="CT_Dynamik" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getOrderQualified">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Request" type="CT_OrderRequest" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getOfferQuestionsResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Response" type="CT_OfferResponse" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="CT_VorNebenVersicherung">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Angaben zu bestehenden oder beendeten Vor- bzw. Nebenversicherungen.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence>
+<xsd:element name="ArtID" type="daten:ST_Fremdversicherungsart" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Abgangsgrund" type="daten:ST_Abgangsgrund" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Abgangsdatum" type="daten:ST_Datum" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Sparte" type="daten:ST_Sparte" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Vertragsnummer" type="allgemein:CT_Vertragsnummer" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Versicherungsunternehmen" type="allgemein:CT_Versicherungsunternehmen" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Versicherungsnehmer" type="CT_Versicherungsnehmer" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Verkaufsprodukt" type="CT_Verkaufsprodukt" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Ablehnungsgrund" type="daten:ST_Text1000" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="de">Grund/Ursache aus welchem ein Antrag von einem anderen Versicherer bereits abgelehnt wurde</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_TAA" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Basisklasse für Tarifierung, Angebot und Antrag</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Geschaeftsvorgang">
+				<xsd:sequence>
+<xsd:element name="Zahlungsart" type="daten:ST_Zahlungsart" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Partner" type="partner:CT_Partner" minOccurs="1" maxOccurs="unbounded"/>
+<xsd:element name="Versicherungsnehmer" type="CT_Versicherungsnehmer" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Verkaufsprodukt" type="CT_Verkaufsprodukt" minOccurs="1" maxOccurs="unbounded"/>
+<xsd:element name="Aktivitaet" type="allgemein:CT_Aktivitaet" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="Gegenstand" type="allgemein:CT_Gegenstand" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="VorNebenVersicherung" type="CT_VorNebenVersicherung" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_QuoteResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Antwort auf eine Tarifierungsanfrage.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_ProzessAntwort">
+				<xsd:sequence>
+<xsd:element name="Tarifierung" type="CT_Tarifierung" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_ZusaetzlicheAntragsdaten" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Analog zu den zusaetzlichen Partnerdaten aus dem Partner-Modell darf der Antrag nicht spartenspezifisch abgeleitet werden, da ansonsten die spartenuebergreifende Buendelung von Produkten nicht funktioniert. Um dennoch spartenspezifische Erweiterungen vorzunehmen, ist dieser Datentyp zu verwenden.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="allgemein:CT_Objekt">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Versicherungsnehmer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Angaben zum Versicherungsnehmer.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="partner:CT_Partnerrolle">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CT_Beitragszahler">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">Angaben zum Beitragszahler.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="partner:CT_Partnerrolle">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

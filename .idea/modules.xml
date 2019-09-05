@@ -8,10 +8,16 @@
       <module fileurl="file://$PROJECT_DIR$/04-JPA-Basics/04-JPA-Basics.iml" filepath="$PROJECT_DIR$/04-JPA-Basics/04-JPA-Basics.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-JPA-Beziehungen/05-JPA-Beziehungen.iml" filepath="$PROJECT_DIR$/05-JPA-Beziehungen/05-JPA-Beziehungen.iml" />
       <module fileurl="file://$PROJECT_DIR$/06-JPA-Features/06-JPA-Features.iml" filepath="$PROJECT_DIR$/06-JPA-Features/06-JPA-Features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-WS/07-WS.iml" filepath="$PROJECT_DIR$/07-WS/07-WS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-WS-Client/07-WS-Client.iml" filepath="$PROJECT_DIR$/07-WS-Client/07-WS-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-WS-EJB-Client/07-WS-EJB-Client.iml" filepath="$PROJECT_DIR$/07-WS-EJB-Client/07-WS-EJB-Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" filepath="$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" filepath="$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" filepath="$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" filepath="$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exkurs-04-Consumer-Ohne-Container/exkurs-04-Consumer-Ohne-Container.iml" filepath="$PROJECT_DIR$/exkurs-04-Consumer-Ohne-Container/exkurs-04-Consumer-Ohne-Container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exkurs-04-Publisher-Ohne-Container/exkurs-04-Publisher-Ohne-Container.iml" filepath="$PROJECT_DIR$/exkurs-04-Publisher-Ohne-Container/exkurs-04-Publisher-Ohne-Container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exkurs-05-WS-Grundlagen/exkurs-05-WS-Grundlagen.iml" filepath="$PROJECT_DIR$/exkurs-05-WS-Grundlagen/exkurs-05-WS-Grundlagen.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/jee.iml" filepath="$PROJECT_DIR$/.idea/jee.iml" />
       <module fileurl="file://$PROJECT_DIR$/kv-common/kv-common.iml" filepath="$PROJECT_DIR$/kv-common/kv-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/kv-main/kv-main.iml" filepath="$PROJECT_DIR$/kv-main/kv-main.iml" />
