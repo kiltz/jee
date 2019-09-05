@@ -25,51 +25,57 @@ public class KommunikationsTestResource {
     @DefaultValue("Life")
     @Encoded
     private String info;
+
     /**
      * Testmethode für Überprüfung der POST-Kommunikation
      * Test mit:
      * curl -i http://127.0.0.1:8080/rs/services/Basic/ping -d txt=test
-     * 
+     *
      * @param txt
      * @return
      */
     @POST
     @Path("ping")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED )
-    public Response pingPost(@FormParam("txt") String txt)
-    {
-        if (info != null)
-        {
-        	txt = txt + " ("+info+")";
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response pingPost(@FormParam("txt") String txt) {
+        if (info != null) {
+            txt = txt + " (" + info + ")";
         }
         return Response.ok(txt.toUpperCase(), MediaType.TEXT_PLAIN).build();
     }
+
     /**
      * Testmethode für Überprüfung der Kommunikation
+     *
      * @param txt
      * @return
      */
     @GET
     @Path("ping")
-    @Produces( MediaType.TEXT_PLAIN)
-    public Response ping(@QueryParam("text") String text)
-    {
-        return Response.ok(text.toUpperCase(), MediaType.TEXT_PLAIN).build(); 
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response ping(@QueryParam("text") String text) throws WillNichtExeption {
+        if (text.equals("nix")) {
+            return Response.status(500).entity("Diesen Text mag ich nicht").build();
+        }
+        return Response.ok(text.toUpperCase(), MediaType.TEXT_PLAIN).build();
     }
+
     /**
      * Testmethode für Überprüfung der Kommunikation
+     *
      * @param txt
      * @return
      */
     @GET
     @Path("ping")
     @Produces("text/html")
-    public String pingHTML(@QueryParam("s") String txt)
-    {
-        return "<h2>"+txt.toLowerCase()+"</h2>";
+    public String pingHTML(@QueryParam("s") String txt) {
+        return "<h2>" + txt.toLowerCase() + "</h2>";
     }
+
     /**
      * Testmethode für Überprüfung der Kommunikation
+     *
      * @param txt
      * @return
      */
@@ -77,10 +83,9 @@ public class KommunikationsTestResource {
     @Path("formPing")
     @Produces("text/html")
     @Consumes("application/x-www-form-urlencoded")
-    public String pingForm(@FormParam("x") String x, @FormParam("y") String y)
-    {
-        
-        return "Eingaben x: "+x+ " y: "+y ;
+    public String pingForm(@FormParam("x") String x, @FormParam("y") String y) {
+
+        return "Eingaben x: " + x + " y: " + y;
     }
 
     @GET
@@ -88,7 +93,7 @@ public class KommunikationsTestResource {
     @Produces("image/*")
     public Response getImage(@PathParam("image") String image) {
         File f = new File(image);
-        System.out.println("File: "+f.getAbsolutePath());
+        System.out.println("File: " + f.getAbsolutePath());
 
         if (!f.exists()) {
             throw new WebApplicationException(404);
@@ -98,6 +103,5 @@ public class KommunikationsTestResource {
         return Response.ok(f, mt).build();
     }
 
-  
 
 }
