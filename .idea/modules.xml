@@ -14,6 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/08-REST/08-REST.iml" filepath="$PROJECT_DIR$/08-REST/08-REST.iml" />
       <module fileurl="file://$PROJECT_DIR$/08-REST-Client/08-REST-Client.iml" filepath="$PROJECT_DIR$/08-REST-Client/08-REST-Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" filepath="$PROJECT_DIR$/09-JMS-MDB/09-JMS-MDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10.JSF/10.JSF.iml" filepath="$PROJECT_DIR$/10.JSF/10.JSF.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10.JSF-CDI/10.JSF-CDI.iml" filepath="$PROJECT_DIR$/10.JSF-CDI/10.JSF-CDI.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" filepath="$PROJECT_DIR$/exkurs-01-annotations/exkurs-01-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" filepath="$PROJECT_DIR$/exkurs-02-validate/exkurs-02-validate.iml" />
       <module fileurl="file://$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" filepath="$PROJECT_DIR$/exkurs-03-JPA-ohne-Container/exkurs-03-JPA-ohne-Container.iml" />
@@ -24,6 +26,8 @@
       <module fileurl="file://$PROJECT_DIR$/kv-common/kv-common.iml" filepath="$PROJECT_DIR$/kv-common/kv-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/kv-main/kv-main.iml" filepath="$PROJECT_DIR$/kv-main/kv-main.iml" />
       <module fileurl="file://$PROJECT_DIR$/kv-test/kv-test.iml" filepath="$PROJECT_DIR$/kv-test/kv-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kv-web/kv-web.iml" filepath="$PROJECT_DIR$/kv-web/kv-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kv-ws/kv-ws.iml" filepath="$PROJECT_DIR$/kv-ws/kv-ws.iml" />
     </modules>
   </component>
 </project>

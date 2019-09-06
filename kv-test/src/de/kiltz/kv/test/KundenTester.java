@@ -8,8 +8,6 @@ import static org.junit.Assert.fail;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import de.kiltz.kv.domain.Adresse;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -20,10 +18,10 @@ import de.kiltz.seminar.ejb3.tools.EJBTools;
 
 public class KundenTester {
 
-	private KundenVerwaltung service;
+	private static KundenVerwaltung service;
 	
-	@Before
-	public  void init() {
+	@BeforeClass
+	public static void init() {
 		try {
 			InitialContext context = new InitialContext();
 			service = (KundenVerwaltung) context.lookup(EJBTools.machJNDIName(KundenVerwaltung.class));
@@ -43,27 +41,18 @@ public class KundenTester {
 			// Alles Gut!
 		}
 		Kunde guterKunde = new Kunde("Mieser Max");
-		guterKunde.setKdNr("K12345");
-		Adresse a = service.neueAdresse(new Adresse("Hauptstr. 21", "66555", "Nußbaum"));
-		assertNotNull(a.getId());
-		guterKunde.setAdresse(a);
 		try {
 			assertNull(guterKunde.getId());
 			guterKunde = service.neuerKunde(guterKunde);
 			assertNotNull(guterKunde.getId());
 		} catch (PflichtfeldException e) {
-			e.printStackTrace();
 			fail("Sollte KEINE Ex werfen!");
 		}
-
-		Kunde neu = service.holeKunde(guterKunde.getId());
-		assertNotNull(neu);
-		assertNotNull(neu.getAdresse());
 		// und aufräumen!
-//		service.loescheKunde(guterKunde.getId());
+		service.loescheKunde(guterKunde.getId());
 	}
 	
-//	@Test
+	@Test
 	public void testeUpdateUndRead() {
 		Kunde k = new Kunde("Mieser Max");
 		try {

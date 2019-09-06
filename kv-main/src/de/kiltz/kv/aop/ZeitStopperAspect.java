@@ -12,11 +12,9 @@ public class ZeitStopperAspect {
 		// Die eigentliche Ausführung
 		Object o = ctx.proceed();
 		long zeit = System.nanoTime() - start;
-		System.out.printf("Rückgabe der Methode: %s ", o);
-		System.out.println();
-		System.out.printf("Vor Ausführung von %s benötigte %,d ns. ", ctx.getMethod().getName(), zeit);
-		System.out.println();
-
+		System.out.println("Rückgabe der Methode: "+o);
+		System.out.println("Vor Ausführung von "+ctx.getMethod().getName() +" benötigte "+zeit+" ns.");
+		
 		return o;
 	}
 

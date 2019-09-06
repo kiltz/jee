@@ -2,7 +2,6 @@ package de.kiltz.kv.service;
 
 import java.util.List;
 
-import de.kiltz.kv.domain.Adresse;
 import de.kiltz.kv.domain.Kunde;
 
 public interface KundenVerwaltung {
@@ -10,8 +9,5 @@ public interface KundenVerwaltung {
 	Kunde aendereKunde(Kunde k) throws PflichtfeldException;
 	Kunde holeKunde(Long id);
 	void loescheKunde(Long id);
-
-	Adresse neueAdresse(Adresse a);
-
 	public List<Kunde> sucheKunde(String suchBegriff);
 }

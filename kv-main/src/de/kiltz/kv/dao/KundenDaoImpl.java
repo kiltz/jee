@@ -1,12 +1,7 @@
 package de.kiltz.kv.dao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -25,7 +20,6 @@ public class KundenDaoImpl implements KundenDao {
 
 	@Override
 	public KundeEntity save(KundeEntity k) {
-		System.out.println(k.getKdNr());
 		em.persist(k);
 		return k;
 	}
@@ -38,24 +32,22 @@ public class KundenDaoImpl implements KundenDao {
 
 	@Override
 	public KundeEntity getById(Long id) {
-		KundeEntity k = em.find(KundeEntity.class, id );
-		return k;
+		
+		return em.find(KundeEntity.class, id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		KundeEntity k = getById(id);
-		if (k != null) {
-			em.remove(k);
-		}
+		KundeEntity deliq = getById(id);
+		em.remove(deliq);
+		
 	}
 
 	@Override
 	public List<KundeEntity> findByName(String name) {
-		Query q = em.createQuery("select k from Kunde k where k.name like :name");
-		q.setParameter("name","%"+name+"%");
-		List<KundeEntity> liste = q.getResultList();
-		return liste;
+		Query q = em.createQuery("select k from KundeEntity as k where k.name like :name");
+		q.setParameter("name", "%"+name+"%");
+		return q.getResultList();
 	}
 
 

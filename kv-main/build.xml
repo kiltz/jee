@@ -23,6 +23,12 @@
 
 	<target name="holeDieAnderen">
 		<ant antfile="${basedir}/kv-common/build.xml" target="deploy"/>
+		<ant antfile="${basedir}/kv-web/build.xml" target="deploy"/>
+		<ant antfile="${basedir}/kv-ws/build.xml" target="deploy"/>
 	</target>
+
+
+
+
 </project>
 

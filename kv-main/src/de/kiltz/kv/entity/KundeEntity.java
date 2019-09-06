@@ -2,19 +2,21 @@ package de.kiltz.kv.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "kunde")
-@Table(name = "kunde")
+@Entity
+@Table(name="Kunde")
 public class KundeEntity implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@Column(length=50)
 	private String name;
-	private String kdNr;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	private AdresseEntity adresse;
 
 	public KundeEntity() {
 	}
@@ -22,14 +24,6 @@ public class KundeEntity implements Serializable {
 	public KundeEntity(String name) {
 		super();
 		this.name = name;
-	}
-
-	public AdresseEntity getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(AdresseEntity adresse) {
-		this.adresse = adresse;
 	}
 
 	public Long getId() {
@@ -48,11 +42,4 @@ public class KundeEntity implements Serializable {
 		this.name = name;
 	}
 
-	public String getKdNr() {
-		return kdNr;
-	}
-
-	public void setKdNr(String kdNr) {
-		this.kdNr = kdNr;
-	}
 }
