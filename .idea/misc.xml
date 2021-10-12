@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectResources">
-    <resource url="http://www.elster.de/basis08/XMLSchema" location="$PROJECT_DIR$/../zsu2/zsu-eLSTB-web/xml/Schemata/allg000008.xsd" />
-    <resource url="http://www.elsterlohn.de/2017-01/XMLSchema" location="$PROJECT_DIR$/../zsu2/zsu-eLSTB-web/xml/Schemata/lstb201701.xsd" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
-</project>

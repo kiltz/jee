@@ -1,4 +1,0 @@
-echo admin admin-123
-#connect 10.23.155.69:9999
-connect 
-deploy -f ../ear/kv.ear

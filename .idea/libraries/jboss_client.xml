@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jboss-client">
-    <CLASSES>
-      <root url="jar://C:/java/jboss-eap-6.4/bin/client/jboss-client.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
