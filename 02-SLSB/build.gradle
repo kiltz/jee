@@ -21,8 +21,8 @@ dependencies {
 task deploy (type:Copy, dependsOn: build) {
 
     from('build/libs'){
-        rename '01-HalloWelt.jar', 'HalloWelt.jar'
+        rename '02-SLSB.jar', 'SLSB.jar'
     }
     into "${project.property('jboss.home')}/standalone/deployments"
-    println "kopiere ear nach ${project.property('jboss.home')}/standalone/deployments"
+    println "kopiere jar nach ${project.property('jboss.home')}/standalone/deployments"
 }
