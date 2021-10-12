@@ -1,31 +1,41 @@
 package de.kiltz.seminar.ejb;
 
-import java.util.Properties;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.util.Properties;
+
+import static org.junit.Assert.assertEquals;
 
 public class KommunikationsTestClient {
 
     private static final ServerName SERVER_NAME = ServerName.JBOSS_EAP_6_4;
+    private static KommunikationsTest service;
 
-    public static void main(String[] args) throws NamingException {
-
+    @BeforeClass
+    public static void init()  throws NamingException {
         InitialContext context = holeContext();
         String jndiName = holeJNDIName();
-
-        KommunikationsTest service = (KommunikationsTest) context
+        service = (KommunikationsTest) context
                 .lookup(jndiName);
-        System.out.println(service.getClass().getName());
-        System.out.println(service.ping("kleiner Test "));
+
+    }
+
+    @Test
+    public void kleinerTest(){
+
+        String txt = service.ping("kleiner Test");
+        assertEquals("KLEINER TEST", txt);
 
     }
 
     private static String holeJNDIName() {
         String name = null;
         String appName = ""; // Name EAR-File
-        String modulName = "KommunikationsTest"; // Name Jar-File
+        String modulName = "HalloWelt"; // Name Jar-File
         String distinctName = ""; // Zusatz in Konfig für JBoss7
         String beanName = "KommunikationsTest";
         // String beanName = KommunikationsTestImpl.class.getSimpleName();
