@@ -3,3 +3,6 @@ rootProject.name = "jee"
 include '01-HalloWelt'
 include '02-SLSB'
 include '03-SFSB'
+include '04-JPA-Basics'
+include '05-JPA-Beziehungen'
+include '06-JPA-Features'

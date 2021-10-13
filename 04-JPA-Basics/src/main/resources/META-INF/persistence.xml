@@ -7,7 +7,7 @@
 	<persistence-unit name="Beispiel" transaction-type="JTA">
 
 		<!-- Verbindung zur Data Source, Transaktionskontext 
-		gute Verbindungs-URL:  jdbc:h2:tcp://localhost/container
+		gute Verbindungs-URL:  jdbc:h2:tcp://localhost/~/test
 		-->
 		<jta-data-source>java:/jdbc/h2</jta-data-source>
 
