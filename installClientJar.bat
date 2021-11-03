@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=D:/Programme/jboss-eap-7.3/bin/client/jboss-client.jar -DgroupId=org.jboss -DartifactId=jboss-client -Dversion=7.3
