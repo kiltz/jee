@@ -1,4 +1,0 @@
-rootProject.name = "jee"
-
-include '01-HalloWelt'
-include '02-SLSB'
