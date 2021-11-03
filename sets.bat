@@ -1,0 +1,1 @@
+set JBOSS_HOME=D:\Programme\jboss-eap-7.3\
