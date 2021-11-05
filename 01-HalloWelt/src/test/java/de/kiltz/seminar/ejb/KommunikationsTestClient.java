@@ -1,18 +1,19 @@
 package de.kiltz.seminar.ejb;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.Properties;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class KommunikationsTestClient {
 
-    private static final ServerName SERVER_NAME = ServerName.JBOSS_EAP_6_4;
+    private static final ServerName SERVER_NAME = ServerName.JBOSS_EAP_AB_6;
     private static KommunikationsTest service;
 
     @BeforeClass
@@ -51,7 +52,7 @@ public class KommunikationsTestClient {
                         + "?stateless";
 
                 break;
-            case JBOSS_EAP_6_4:
+            case JBOSS_EAP_AB_6:
 
                 name = "ejb:" + appName + "/" + modulName + "/"
                         + distinctName + "/" + beanName + "!" + viewClassName;
@@ -79,7 +80,7 @@ public class KommunikationsTestClient {
                 props.put("java.naming.provider.url", "127.0.0.1:1099");
                 break;
             case JBOSS_7:
-            case JBOSS_EAP_6_4:
+            case JBOSS_EAP_AB_6:
                 props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
                 break;
             case GLASSFISH:
@@ -100,5 +101,5 @@ public class KommunikationsTestClient {
 }
 
 enum ServerName {
-    JBOSS_5, JBOSS_7, JBOSS_EAP_6_4, GLASSFISH, BEA;
+    JBOSS_5, JBOSS_7, JBOSS_EAP_AB_6, GLASSFISH, BEA;
 }
