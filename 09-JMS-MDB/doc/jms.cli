@@ -1,2 +1,0 @@
-connect
-jms-queue add --queue-address=test --entries=queues/test
