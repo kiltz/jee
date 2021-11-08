@@ -110,7 +110,7 @@
                                     </wsdl>
                                 </wsdlOption>
                                 <wsdlOption>
-                                    <wsdl>http://localhost:8080/WS/DomainServiceImpl?wsdl
+                                    <wsdl>http://localhost:8080/WS/Domain/DomainPortSIB?wsdl
                                     </wsdl>
                                 </wsdlOption>
                             </wsdlOptions>

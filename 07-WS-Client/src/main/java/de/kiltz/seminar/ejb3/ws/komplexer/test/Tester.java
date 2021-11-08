@@ -1,8 +1,8 @@
 package de.kiltz.seminar.ejb3.ws.komplexer.test;
 
+import de.kiltz.seminar.ejb3.ws.komplexer.Domain;
 import de.kiltz.seminar.ejb3.ws.komplexer.DomainObject;
-import de.kiltz.seminar.ejb3.ws.komplexer.DomainService;
-import de.kiltz.seminar.ejb3.ws.komplexer.DomainServiceImplService;
+import de.kiltz.seminar.ejb3.ws.komplexer.DomainPort;
 
 public class Tester {
 
@@ -10,8 +10,8 @@ public class Tester {
      * @param args
      */
     public static void main(String[] args) {
-        DomainServiceImplService erzeuger = new DomainServiceImplService();
-        DomainService service = erzeuger.getDomainServiceImplPort();
+        Domain erzeuger = new Domain();
+        DomainPort service = erzeuger.getDomainHttpSoapPort();
         DomainObject obj = service.getDomainObject();
         System.out.println(obj.getText());
 

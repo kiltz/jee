@@ -109,7 +109,7 @@
                             <sourceRoot>${project.basedir}/src/main/generated/</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/src/main/resources/META-INF/wsdl/DomainServiceImpl.wsdl
+                                    <wsdl>${basedir}/src/main/resources/META-INF/wsdl/Domain.wsdl
                                     </wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
