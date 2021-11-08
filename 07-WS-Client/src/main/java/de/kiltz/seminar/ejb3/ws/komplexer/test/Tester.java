@@ -6,15 +6,15 @@ import de.kiltz.seminar.ejb3.ws.komplexer.DomainServiceImplService;
 
 public class Tester {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		DomainServiceImplService erzeuger = new DomainServiceImplService();
-		DomainService service = erzeuger.getDomainServiceImplPort();
-		DomainObject obj = service.getDomainObject();
-		System.out.println(obj.getText());
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        DomainServiceImplService erzeuger = new DomainServiceImplService();
+        DomainService service = erzeuger.getDomainServiceImplPort();
+        DomainObject obj = service.getDomainObject();
+        System.out.println(obj.getText());
 
-	}
+    }
 
 }
