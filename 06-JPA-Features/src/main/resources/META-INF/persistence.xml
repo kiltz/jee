@@ -16,4 +16,34 @@
         
         </properties>
     </persistence-unit>
+    <persistence-unit name="Test" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Zu verwendende Implementierung -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- Persistierbare Klassen -->
+        <class>de.kiltz.jpa.features.lock.OptLockKunde</class>
+
+        <!-- Konfiguration der Hibernate Implementierung -->
+        <properties>
+            <!-- Name des intern verwendeten JDBC-Treibers -->
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver" />
+            <!-- URL der zu verwendenden Datenbank -->
+            <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/test" />
+            <!-- Benutzername und Passwort; Standardwerte der HSQLDB -->
+            <property name="hibernate.connection.username" value="sa" />
+            <property name="hibernate.connection.password" value="" />
+
+            <!-- SQL-Dialect, den Hibernate verwenden soll -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+
+            <!-- Flag, ob Tabellen automatisch erzeugt werden sollen -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+
+            <!-- Flag, ob SQL-Statements ausgegeben werden sollen -->
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+
 </persistence>
