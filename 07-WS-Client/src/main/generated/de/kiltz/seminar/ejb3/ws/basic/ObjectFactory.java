@@ -11,7 +11,7 @@ import javax.xml.namespace.QName;
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
  * generated in the de.kiltz.seminar.ejb3.ws.basic package. 
- * <p>An ObjectFactory allows you to programatically 
+ * &lt;p&gt;An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
  * content can consist of schema derived interfaces 
@@ -51,8 +51,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Ping }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Ping }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Ping }{@code >}
      */
     @XmlElementDecl(namespace = "http://basic.ws.ejb3.seminar.kiltz.de/", name = "ping")
     public JAXBElement<Ping> createPing(Ping value) {
@@ -60,8 +64,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PingResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PingResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PingResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://basic.ws.ejb3.seminar.kiltz.de/", name = "pingResponse")
     public JAXBElement<PingResponse> createPingResponse(PingResponse value) {

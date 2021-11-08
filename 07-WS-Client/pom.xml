@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.kiltz.jee</groupId>
+        <artifactId>jee</artifactId>
+        <version>1.0.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>07-ws-client</artifactId>
+    <packaging>ejb</packaging>
+    <name>07 WS Client :: EJB</name>
+
+    <dependencies>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- JEE and JBoss AS 7 APIs (provided) -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.ws</groupId>
+            <artifactId>jaxws-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.jws</groupId>
+            <artifactId>javax.jws-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>gen-ws-stubs</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                        <configuration>
+                            <sourceRoot>${project.basedir}/src/main/generated/</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl> http://localhost:8080/WS/BasicWebServiceImpl?wsdl
+                                    </wsdl>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>http://localhost:8080/WS/DomainServiceImpl?wsdl
+                                    </wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                            <defaultOptions>
+                                <extendedSoapHeaders>true</extendedSoapHeaders>
+                                <xJCargs>
+                                    <xJCarg>-Xvalue-constructor</xJCarg>
+                                </xJCargs>
+                            </defaultOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-value-constructor</artifactId>
+                        <version>3.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
