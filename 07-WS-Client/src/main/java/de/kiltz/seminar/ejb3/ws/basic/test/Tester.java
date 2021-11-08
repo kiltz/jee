@@ -9,11 +9,10 @@ public class Tester {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Test");
-//		BasicWebServiceImplService erzeuger = new BasicWebServiceImplService();
-//		BasicWebService service = erzeuger.getBasicWebServiceImplPort();
-//		System.out.println(service.getClass().getName());
-//		System.out.println(service.ping("kleiner test"));
+		BasicWebServiceImplService erzeuger = new BasicWebServiceImplService();
+		BasicWebService service = erzeuger.getBasicWebServiceImplPort();
+		System.out.println(service.getClass().getName());
+		System.out.println(service.ping("kleiner test"));
 
 	}
 

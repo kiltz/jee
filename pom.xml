@@ -21,6 +21,7 @@
         <module>06-JPA-Features</module>
         <module>07-WS</module>
         <module>07-WS-Client</module>
+        <module>07-WS-EJB-Client</module>
     </modules>
 
     <properties>
