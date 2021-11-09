@@ -21,9 +21,8 @@ Benutzer anlegen
 * benutzer, benutzer-123, Gruppe user
 
 Security-Settings die Rolle eintragen:
-                <security-setting name="#">
-                    <role name="guest" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
-                    <role name="user" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
-                </security-setting>
+<security-setting name="#">
+    <role name="user" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
+</security-setting>
  
  
