@@ -24,6 +24,7 @@
         <module>07-WS-EJB-Client</module>
         <module>08-REST</module>
         <module>08-REST-Client</module>
+        <module>09-JMS-MDB</module>
     </modules>
 
     <properties>
