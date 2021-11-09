@@ -25,6 +25,8 @@
         <module>08-REST</module>
         <module>08-REST-Client</module>
         <module>09-JMS-MDB</module>
+        <module>10-JSF</module>
+        <module>10-JSF-CDI</module>
     </modules>
 
     <properties>
