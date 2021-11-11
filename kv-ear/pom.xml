@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.kiltz.kv</groupId>
+		<artifactId>kv</artifactId>
+		<version>1.0.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>kv-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>KV EAR :: EJB</name>
+
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>de.kiltz.kv</groupId>
+			<artifactId>kv-common</artifactId>
+			<version>1.0.0.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>de.kiltz.kv</groupId>
+			<artifactId>kv-main</artifactId>
+			<version>1.0.0.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>de.kiltz.kv</groupId>
+			<artifactId>kv-ws</artifactId>
+			<version>1.0.0.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>de.kiltz.kv</groupId>
+			<artifactId>kv-web</artifactId>
+			<version>1.0.0.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${version.ear.plugin}</version>
+
+				<configuration>
+
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<key>Build-Timestamp: ${maven.build.timestamp}</key>
+						</manifestEntries>
+					</archive>
+
+					<!-- Tell Maven we are using Java EE 6 -->
+					<version>7</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+
+					<finalName>kv</finalName>
+
+					<modules>
+						<jarModule>
+							<groupId>de.kiltz.kv</groupId>
+							<artifactId>kv-common</artifactId>
+						</jarModule>
+						<ejbModule>
+							<groupId>de.kiltz.kv</groupId>
+							<artifactId>kv-main</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>de.kiltz.kv</groupId>
+							<artifactId>kv-ws</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>de.kiltz.kv</groupId>
+							<artifactId>kv-web</artifactId>
+							<contextRoot>/kv</contextRoot>
+						</webModule>
+
+					</modules>
+
+					<fileNameMapping>no-version</fileNameMapping>
+
+				</configuration>
+			</plugin>
+
+			<!-- The JBoss AS plugin deploys the ear to a local JBoss AS container -->
+			<!-- Due to Maven's lack of intelligence with EARs we need to configure 
+				the jboss-as maven plugin to skip deployment for all modules. We then enable 
+				it specifically in the ear module. -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<configuration>
+					<filename>${project.artifactId}.ear</filename>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>
