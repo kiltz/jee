@@ -30,10 +30,10 @@ public class KundenSIBService
         try {
             URL baseUrl;
             baseUrl = de.kiltz.kv.ws.KundenSIBService.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/kvWS/KundenSIB?wsdl");
+            url = new URL(baseUrl, "http://localhost:8080/kv-ws/KundenSIBService/KundenSIB?wsdl");
 
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/kvWS/KundenSIB?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/kv-ws/KundenSIBService/KundenSIB?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         KUNDENSIBSERVICE_WSDL_LOCATION = url;

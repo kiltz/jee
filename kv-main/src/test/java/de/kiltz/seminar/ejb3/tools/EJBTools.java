@@ -3,7 +3,7 @@ package de.kiltz.seminar.ejb3.tools;
 
 public class EJBTools {
 	private static final String APP_NAME = "kv"; // Name EAR-File
-	private static final String MODUL_NAME = "kvMain"; // Name Jar-File
+	private static final String MODUL_NAME = "kv-main"; // Name Jar-File
 	private static final String DISTINCT_NAME = ""; // Zusatz in Konfig für JBoss7
 
 	public static String machJNDIName(Class klasse) {

@@ -20,7 +20,7 @@ import javax.xml.ws.Holder;
 @Stateless
 public class KundenSIB implements KundenSEI {
 
-    @Inject
+    @EJB
     private KundenVerwaltung service;
 
     @Override

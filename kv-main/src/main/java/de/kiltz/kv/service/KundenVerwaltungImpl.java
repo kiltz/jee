@@ -10,9 +10,10 @@ import javax.ejb.*;
 import javax.interceptor.Interceptors;
 import java.util.List;
 
-@Stateless
+@Stateless(name = "KundenVerwaltung")
 @Interceptors({ZeitStopperAspect.class})
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
+@Remote(KundenVerwaltung.class)
 public class KundenVerwaltungImpl implements KundenVerwaltung {
 
     @EJB

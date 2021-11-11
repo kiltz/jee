@@ -12,10 +12,9 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 
-@Stateless
+@Stateless(name="RechnungsVerwaltung")
 @Remote(RechnungsVerwaltung.class)
 @Interceptors({ZeitStopperAspect.class})
-
 public class RechnungsVerwaltungImpl implements RechnungsVerwaltung {
 
     @EJB
