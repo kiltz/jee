@@ -4,29 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.kiltz.jee</groupId>
-    <artifactId>jee</artifactId>
+    <groupId>de.kiltz.kv</groupId>
+    <artifactId>kv</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>JEE :: Parent</name>
-    <description>JEE JBoss</description>
+    <name>KV :: Parent</name>
+    <description>KV JBoss</description>
 
     <modules>
-        <module>01-HalloWelt</module>
-        <module>02-SLSB</module>
-        <module>03-SFSB</module>
-        <module>04-JPA-Basics</module>
-        <module>05-JPA-Beziehungen</module>
-        <module>06-JPA-Features</module>
-        <module>07-WS</module>
-        <module>07-WS-Client</module>
-        <module>07-WS-EJB-Client</module>
-        <module>08-REST</module>
-        <module>08-REST-Client</module>
-        <module>09-JMS-MDB</module>
-        <module>10-JSF</module>
-        <module>10-JSF-CDI</module>
+        <module>kv-common</module>
+        <module>kv-main</module>
+        <module>kv-web</module>
+        <module>kv-ws</module>
+        <module>kv-ear</module>
     </modules>
 
     <properties>
