@@ -1,6 +1,5 @@
-package de.kiltz.seminar.ejb3.aufgabe;
+package de.kiltz.seminar.ejb3.aufgabe.kv;
 
-import de.kiltz.seminar.ejb3.slsb2.local.EntfernterDienst;
 import de.kiltz.seminar.ejb3.tools.EJBTools;
 import org.junit.BeforeClass;
 import org.junit.Test;

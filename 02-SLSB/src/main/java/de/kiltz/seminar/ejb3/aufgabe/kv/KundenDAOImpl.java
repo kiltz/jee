@@ -1,4 +1,4 @@
-package de.kiltz.seminar.ejb3.aufgabe;
+package de.kiltz.seminar.ejb3.aufgabe.kv;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
