@@ -20,8 +20,10 @@ public class KommunikationsTestClient {
     public static void init()  throws NamingException {
         InitialContext context = holeContext();
         String jndiName = holeJNDIName();
+        System.out.println(jndiName);
         service = (KommunikationsTest) context
                 .lookup(jndiName);
+        System.out.println(service.getClass().getName());
 
     }
 

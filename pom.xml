@@ -277,23 +277,6 @@
                     <version>${version.maven.install.plugin}</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${version.surefire.plugin}</version>
-                    <configuration>
-                        <systemPropertyVariables>
-                            <claudia.home>${claudia.home}</claudia.home>
-                        </systemPropertyVariables>
-                        <environmentVariables>
-                            <CLAUDIA_HOME>${CLAUDIA_HOME}</CLAUDIA_HOME>
-                        </environmentVariables>
-                        <includes>
-                            <include>**/*.java</include>
-                        </includes>
-                        <skipTests>false</skipTests>
-                    </configuration>
-                </plugin>
 
                 <!-- The JBoss AS plugin deploys the ear to a local JBoss AS container -->
                 <!-- Due to Maven's lack of intelligence with EARs we need to configure
