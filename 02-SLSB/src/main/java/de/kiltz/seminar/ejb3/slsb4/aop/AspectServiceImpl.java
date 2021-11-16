@@ -3,7 +3,7 @@ package de.kiltz.seminar.ejb3.slsb4.aop;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 
-@Stateless(name = "AspectService", mappedName = "ejb/AspectService")
+@Stateless(name = "AspectService")
 public class AspectServiceImpl implements AspectService {
 
 	@Override
