@@ -2,13 +2,21 @@ package de.kiltz.seminar.ejb3.aufgabe.kv;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.util.HashMap;
 import java.util.Map;
 
 @Stateless(name="KundenDAO")
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class KundenDAOImpl implements KundenDAO {
 
-    private Map<Long, Kunde> kundenListe = new HashMap<>();
+    @PersistenceContext
+    private EntityManager em;
+
 
     @PostConstruct
     public void init() {
@@ -19,24 +27,26 @@ public class KundenDAOImpl implements KundenDAO {
 
     @Override
     public Kunde save(Kunde k) {
-        k.setId(System.currentTimeMillis());
-        kundenListe.put(k.getId(), k);
+        em.persist(k);
+        k.setKdNr("K"+k.getId());
+
         return k;
     }
 
     @Override
     public Kunde update(Kunde k) {
-        kundenListe.put(k.getId(), k);
+        em.merge(k);
         return k;
     }
 
     @Override
     public Kunde getById(Long id) {
-        return kundenListe.get(id);
+        return em.find(Kunde.class, id);
     }
 
     @Override
     public void delete(Long id) {
-    kundenListe.remove(id);
+        Kunde k = getById(id);
+        em.remove(k);
     }
 }

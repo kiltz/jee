@@ -1,11 +1,18 @@
 package de.kiltz.seminar.ejb3.aufgabe.kv;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class Kunde implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(length = 75)
     private String name;
+    @Column(length = 75)
     private String vorname;
+    @Column(length = 7, unique = true)
     private String kdNr;
 
     public Kunde() {
@@ -15,6 +22,11 @@ public class Kunde implements Serializable {
         this.name = name;
         this.vorname = vorname;
         this.kdNr = kdNr;
+    }
+
+    @PostPersist
+    void nachSpeichern() {
+        System.out.println("Ganz neuer Kunde mit ID: "+id );
     }
 
     public Long getId() {

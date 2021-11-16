@@ -2,9 +2,12 @@ package de.kiltz.seminar.ejb3.aufgabe.kv;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import java.util.Optional;
 
 @Stateless(name="KundenVerwaltung")
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class KundenVerwaltungImpl implements KundenVerwaltung{
 
     @EJB
