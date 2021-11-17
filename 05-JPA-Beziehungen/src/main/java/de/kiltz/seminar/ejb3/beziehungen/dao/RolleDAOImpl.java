@@ -3,6 +3,8 @@ package de.kiltz.seminar.ejb3.beziehungen.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -10,6 +12,7 @@ import javax.persistence.Query;
 import de.kiltz.seminar.ejb3.beziehungen.Rolle;
 
 @Stateless(name = "RolleDAO")
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class RolleDAOImpl implements RolleDAO {
 
 	@PersistenceContext

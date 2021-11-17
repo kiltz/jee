@@ -26,7 +26,7 @@
 
     <properties>
 
-        <jboss.home>D:\Programme\jboss-eap-7.3</jboss.home>
+        <jboss.home>c:\java\jboss-eap</jboss.home>
         <java.version>11</java.version>
 
         <timestamp>${maven.build.timestamp}</timestamp>

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 import de.kiltz.seminar.ejb3.beziehungen.Benutzer;
 import de.kiltz.seminar.ejb3.beziehungen.Gruppe;
@@ -17,6 +18,7 @@ import de.kiltz.seminar.ejb3.beziehungen.dao.KontaktdatenDAO;
 import de.kiltz.seminar.ejb3.beziehungen.dao.RolleDAO;
 
 @Stateless(name = "BenutzerService", mappedName = "ejb/BenutzerService")
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class BenutzerServiceImpl implements BenutzerService {
 
 	@EJB(beanName = "BenutzerDAO")
@@ -61,7 +63,11 @@ public class BenutzerServiceImpl implements BenutzerService {
 	}
 
 	public Benutzer holeBenutzer(int id) throws Exception {
-		return benutzerDAO.getById(id);
+		Benutzer ben = benutzerDAO.getById(id);
+		System.out.println("Greife auf die Rollen zu");
+		ben.getRollen().size();
+		System.out.println("Haben auf die Rollen zugegriffen");
+		return ben;
 	}
 
 	public void setzeGruppe(Benutzer ben, String nameDerGruppe) throws Exception {
