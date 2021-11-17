@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/calc/v2"
+        xmlns:tns="http://finkonsens.de/calc/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <complexType name="Multiply">
+      <sequence>
+         <element name="Factor1" type="integer" />
+         <element name="Factor2" type="integer" />
+      </sequence>
+   </complexType>
+
+   <complexType name="MultiplyResponse">
+      <sequence>
+         <element name="Product" type="integer" />
+      </sequence>
+   </complexType>
+
+   <element name="Multiply" type="tns:Multiply" />
+   <element name="MultiplyResponse" type="tns:MultiplyResponse" />
+
+</schema>

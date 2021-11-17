@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/arc/v2"
+        xmlns:tns="http://finkonsens.de/arc/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <annotation>
+      <documentation xml:lang="de">
+         Definition der Typen UUID und UUIDVersion4.
+         Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+      </documentation>
+   </annotation>
+
+   <simpleType name="UUID">
+      <annotation>
+         <documentation xml:lang="de">
+            Ein Universally Unique Identifier (UUID) nach RFC 4122.
+         </documentation>
+      </annotation>
+      <restriction base="token">
+         <pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+      </restriction>
+   </simpleType>
+
+   <simpleType name="UUIDVersion4">
+      <annotation>
+         <documentation xml:lang="de">
+            Ein UUID in Version 4 (Abschnitt 4.4 von RFC 4122).
+         </documentation>
+      </annotation>
+      <restriction base="tns:UUID">
+         <pattern value=".{14}4.{4}[89abAB].{16}" />
+      </restriction>
+   </simpleType>
+
+</schema>

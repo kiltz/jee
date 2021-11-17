@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<definitions name="Calculator"
+             targetNamespace="http://finkonsens.de/calc/v2"
+             xmlns:tns="http://finkonsens.de/calc/v2"
+             xmlns:sns="http://finkonsens.de/arc/v2"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+   <documentation>
+      Ein Taschenrechner-Webservice.
+      Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+   </documentation>
+
+   <types>
+      <schema targetNamespace="http://finkonsens.de/calc/v2"
+              xmlns="http://www.w3.org/2001/XMLSchema"
+              elementFormDefault="qualified">
+
+         <import namespace="http://finkonsens.de/arc/v2"
+                 schemaLocation="../../arc/v2/Types.xsd" />
+         <include schemaLocation="./Multiply.xsd" />
+         <include schemaLocation="./Subtract.xsd" />
+
+         <complexType name="Authentication">
+            <sequence>
+               <element name="Name" type="token" />
+               <element name="AuthID" type="token" />
+            </sequence>
+         </complexType>
+         <element name="Authentication" type="tns:Authentication" />
+      </schema>
+   </types>
+
+   <message name="MultiplyReq">
+      <part name="Log"  element="sns:LogIDs" />
+      <part name="Auth" element="tns:Authentication" />
+      <part name="Body" element="tns:Multiply" />
+   </message>
+   <message name="MultiplyRsp">
+      <part name="Body" element="tns:MultiplyResponse" />
+   </message>
+   <message name="SubtractReq">
+      <part name="Log"  element="sns:LogIDs" />
+      <part name="Auth" element="tns:Authentication" />
+      <part name="Body" element="tns:Subtract" />
+   </message>
+   <message name="SubtractRsp">
+      <part name="Body" element="tns:SubtractResponse" />
+   </message>
+   <message name="CalculatorException">
+      <part name="FaultDetail" element="sns:FaultInfo" />
+   </message>
+
+   <portType name="CalculatorPort">
+      <operation name="Multiply">
+         <input  message="tns:MultiplyReq" />
+         <output message="tns:MultiplyRsp" />
+         <fault  message="tns:CalculatorException" name="KonsensFault" />
+      </operation>
+      <operation name="Subtract">
+         <input  message="tns:SubtractReq" />
+         <output message="tns:SubtractRsp" />
+         <fault  message="tns:CalculatorException" name="KonsensFault" />
+      </operation>
+   </portType>
+
+   <binding name="CalculatorSoapBinding" type="tns:CalculatorPort">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+      <operation name="Multiply">
+         <soap:operation soapAction="Multiply" />
+         <input>
+            <soap:header message="tns:MultiplyReq" part="Log"  use="literal" />
+            <soap:header message="tns:MultiplyReq" part="Auth" use="literal" />
+            <soap:body                            parts="Body" use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="KonsensFault">
+            <soap:fault name="KonsensFault" />
+         </fault>
+      </operation>
+      <operation name="Subtract">
+         <soap:operation soapAction="Subtract" />
+         <input>
+            <soap:header message="tns:SubtractReq" part="Log"  use="literal" />
+            <soap:header message="tns:SubtractReq" part="Auth" use="literal" />
+            <soap:body                            parts="Body" use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="KonsensFault">
+            <soap:fault name="KonsensFault" />
+         </fault>
+      </operation>
+   </binding>
+
+   <service name="CalculatorService">
+      <port name="CalculatorHttpSoapPort" binding="tns:CalculatorSoapBinding">
+         <soap:address location="http://75.2.77.55:8080/Calculator_1/" />
+      </port>
+   </service>
+
+</definitions>

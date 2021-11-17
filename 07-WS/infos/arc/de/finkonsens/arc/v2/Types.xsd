@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/arc/v2"
+        xmlns:tns="http://finkonsens.de/arc/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <annotation>
+      <documentation xml:lang="de">
+         Sammel-Schema zur Verwendung bei import.
+         Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="./UUID.xsd" />
+   <include schemaLocation="./SysID.xsd" />
+   <include schemaLocation="./SoapHeader.xsd" />
+   <include schemaLocation="./SoapFault.xsd" />
+
+</schema>

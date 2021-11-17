@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://finkonsens.de/geco/regal/v2" targetNamespace="http://finkonsens.de/geco/regal/v2" elementFormDefault="qualified">
+	<simpleType name="Name">
+		<restriction base="string">
+			<pattern value="[A-Z][\-A-Za-z0-9_.]{1,98}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Version">
+		<restriction base="positiveInteger"/>
+	</simpleType>
+	<simpleType name="Mandant">
+		<restriction base="string">
+			<pattern value="[A-Z][\-A-Za-z0-9_.]{1,98}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DienstAdresse">
+		<restriction base="anyURI"/>
+	</simpleType>
+</schema>

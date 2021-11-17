@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/calc/v2"
+        xmlns:tns="http://finkonsens.de/calc/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <complexType name="Subtract">
+      <sequence>
+         <element name="Minuend" type="integer" />
+         <element name="Subtrahend" type="integer" />
+      </sequence>
+   </complexType>
+
+   <complexType name="SubtractResponse">
+      <sequence>
+         <element name="Difference" type="integer" />
+      </sequence>
+   </complexType>
+
+   <element name="Subtract" type="tns:Subtract" />
+   <element name="SubtractResponse" type="tns:SubtractResponse" />
+
+</schema>
