@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/arc/v2"
+        xmlns:tns="http://finkonsens.de/arc/v2"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <annotation>
+      <documentation xml:lang="de">
+         Definition der in KONSENS-Webservices verbindlichen Header-Elemente.
+         Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="./UUID.xsd" />
+   <include schemaLocation="./SysID.xsd" />
+
+   <import namespace="http://schemas.xmlsoap.org/soap/envelope/"
+      schemaLocation="../../../../org/xmlsoap/schemas/soap/envelope/SoapEnv.xsd" />
+
+   <complexType name="LogID">
+      <sequence>
+         <element name="SID" type="tns:SysID" />
+         <element name="UUID" type="tns:UUIDVersion4" />
+      </sequence>
+   </complexType>
+
+   <complexType name="LogIDs">
+      <sequence>
+         <element name="MID" type="tns:LogID" />
+         <element name="CID" type="tns:LogID" />
+      </sequence>
+      <!-- mustUnderstand muss immer den Wert "1" haben -->
+      <attribute ref="env:mustUnderstand" />
+      <attribute ref="env:actor"
+                 fixed="http://schemas.xmlsoap.org/soap/actor/next" />
+   </complexType>
+
+   <element name="LogIDs" type="tns:LogIDs" />
+
+</schema>

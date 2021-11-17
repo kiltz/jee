@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/arc/v2"
+        xmlns:tns="http://finkonsens.de/arc/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <annotation>
+      <documentation xml:lang="de">
+         Definition von SysID.
+         Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+      </documentation>
+   </annotation>
+
+   <simpleType name="SysID">
+      <annotation>
+         <documentation xml:lang="de">
+            Eine SysID besteht entweder aus der zweistelligen numerischen
+            Projektkennung aus KONVIC oder der zweistelligen alphanumerischen
+            Länderkennung nach den Festlegungen der Fg-VDM, gefolgt von einem
+            Bindestrich und einem maximal 29 Zeichen langen String, der
+            innerhalb von Projekt oder Verfahren eindeutig sein muss.
+         </documentation>
+      </annotation>
+      <restriction base="token">
+         <pattern value="([0-9]{2}|BB|BE|BW|BY|HB|HE|HH|MV|NI|NW|RP|SH|SL|SN|ST|TH|BF)-[A-Z][A-Za-z0-9]{0,28}" />
+      </restriction>
+   </simpleType>
+
+</schema>

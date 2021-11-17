@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<schema targetNamespace="http://finkonsens.de/arc/v2"
+        xmlns:tns="http://finkonsens.de/arc/v2"
+        xmlns:rns="http://finkonsens.de/geco/regal/v2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+   <annotation>
+      <documentation xml:lang="de">
+         FaultInfo kapselt die Informationen eines technischen Fehlers
+         in einem KONSENS-Webservice. Es ist das einzige Unterelement von
+         detail in einem SOAP-Fault, andere Unterelemente sind nicht erlaubt.
+         Autor: Thomas Hirsch, Bayerisches Landesamt für Steuern München.
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="./UUID.xsd" />
+   <include schemaLocation="./SysID.xsd" />
+
+   <import namespace="http://finkonsens.de/geco/regal/v2"
+           schemaLocation="../../geco/regal/v2/Types.xsd" />
+
+   <simpleType name="Code">
+      <restriction base="positiveInteger">
+         <pattern value="[1-9][0-9]{0,17}" />
+      </restriction>
+   </simpleType>
+
+   <simpleType name="Severity">
+      <restriction base="token">
+         <enumeration value="SEVERE" />
+         <enumeration value="ERROR" />
+         <enumeration value="WARNING" />
+         <enumeration value="RETRY" />
+      </restriction>
+   </simpleType>
+
+   <simpleType name="BLalpha">
+      <annotation>
+         <documentation xml:lang="de">
+            Die zweistellige alphanumerische Länderkennung
+            nach den Festlegungen der Fg-VDM.
+         </documentation>
+      </annotation>
+      <restriction base="token">
+         <pattern value="BB|BE|BW|BY|HB|HE|HH|MV|NI|NW|RP|SH|SL|SN|ST|TH|BF" />
+      </restriction>
+   </simpleType>
+
+   <simpleType name="ImplVersion">
+      <annotation>
+         <documentation xml:lang="de">
+            Release-, Liefer- und Buildnummer nach VA "Release Management KONSENS"
+         </documentation>
+      </annotation>
+      <restriction base="token">
+         <pattern value="[1-9][0-9]?(\.(0|[1-9][0-9]?)){3}(-[1-9][0-9]?)?(-[A-Za-z0-9\-]+)?" />
+      </restriction>
+   </simpleType>
+
+   <complexType name="InternSource">
+      <sequence>
+         <element name="TimeStamp" type="dateTime" />
+         <element name="HostID" type="string" />
+         <element name="BLalpha" type="tns:BLalpha" />
+         <element name="ImplVersion" type="tns:ImplVersion" />
+         <element name="SID" type="tns:SysID" />
+         <element name="Reason" type="normalizedString" minOccurs="0" />
+      </sequence>
+   </complexType>
+
+   <complexType name="ExternSource">
+      <sequence>
+         <element name="Name" type="rns:Name" />
+         <element name="Version" type="rns:Version" />
+         <element name="Mandant" type="rns:Mandant" />
+         <element name="DienstAdresse" type="rns:DienstAdresse" />
+      </sequence>
+   </complexType>
+
+   <complexType name="Source">
+      <sequence>
+         <element name="InternSource" type="tns:InternSource" />
+         <element name="ExternSource" type="tns:ExternSource" minOccurs="0" />
+      </sequence>
+   </complexType>
+
+   <complexType name="Sources">
+      <sequence>
+         <element name="Source" type="tns:Source" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+
+   <complexType name="FaultInfo">
+      <sequence>
+         <element name="Code" type="tns:Code" />
+         <element name="Message" type="normalizedString" />
+         <element name="Severity" type="tns:Severity" />
+         <element name="FaultID" type="tns:UUIDVersion4" />
+         <element name="Sources" type="tns:Sources" />
+      </sequence>
+   </complexType>
+
+   <element name="FaultInfo" type="tns:FaultInfo" />
+
+</schema>
