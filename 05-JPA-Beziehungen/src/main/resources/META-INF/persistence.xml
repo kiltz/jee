@@ -12,8 +12,9 @@
         <!-- Informationen für den Persistence-Provider -->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-            <property name="hibernate.hbm2ddl.auto" value="update"/> 
-        
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.show_sql" value="true"/>
+
         </properties>
     </persistence-unit>
 </persistence>

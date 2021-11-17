@@ -56,8 +56,13 @@ public class BasicTest {
 		System.out.println("\n\n-------------------\n\n");
 		System.out.println(b);
 
+		Benutzer neu = service.holeBenutzer(b.getId());
+		System.out.println("Anzahl Rollen: "+ neu.getRollen().size());
+
 		List<Benutzer> liste = service.sucheBenutzer(b.getName());
+		liste.forEach(System.out::println);
 		System.out.println(liste.size());
+		System.out.println("Ende!");
 
 	}
 

@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -12,6 +14,7 @@ import javax.persistence.Query;
 import de.kiltz.seminar.ejb3.beziehungen.Benutzer;
 
 @Stateless(name = "BenutzerDAO")
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class BenutzerDAOImpl implements BenutzerDAO {
 
 	@PersistenceContext
@@ -26,7 +29,7 @@ public class BenutzerDAOImpl implements BenutzerDAO {
 	@SuppressWarnings("unchecked")
 	public List<Benutzer> getByName(String name) throws Exception {
 		System.out.println("getByName: Start");
-		Query q = em.createQuery("select b from Benutzer as b where b.name like '%" + name + "%'");
+		Query q = em.createQuery("select b from Benutzer b join fetch b.rollen where b.name like '%" + name + "%'");
 		List<Benutzer> ret = q.getResultList();
 		System.out.println("getByName: " + ret.size());
 		return ret;

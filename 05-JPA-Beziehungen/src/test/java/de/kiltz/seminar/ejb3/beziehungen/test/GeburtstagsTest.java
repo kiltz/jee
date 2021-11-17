@@ -29,6 +29,7 @@ public class GeburtstagsTest {
 		System.out.println(liste.size());
 		for (Benutzer benutzer : liste) {
 			System.out.println(benutzer.getName() + ": " + benutzer.getKontaktdaten().getGeburtstag());
+			benutzer.getRollen().size();
 		}
 	}
 
