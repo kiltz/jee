@@ -1,0 +1,16 @@
+
+1. Erweitert den BasicWebService um die Methode
+    public ServerInfo getInfo() {...}
+
+    ServerInfo ist dabei wieder eine Sammlung von Datentypen (ENUM nicht vergessen)
+
+    Testet den Service in SOAP-UI
+
+2. Erweitert den Domain-WS um eine Methode
+
+    getVersionsNummer()
+
+    Geht dabei von der WSDL aus.
+
+3. Baue den Calculator-WS
+
